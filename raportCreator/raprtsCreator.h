@@ -8,7 +8,7 @@
 
 class RaportsCreator
 {
-    std::string headerFileTemplte { "RaportHeader.txt" };
+    std::string headerFileTemplte { "raportheader.txt" };
     std::string settingsFile { "settings.txt" };  
     std::filesystem::path raportsDirectory;
     std::filesystem::path templateDirectory;
@@ -18,6 +18,10 @@ class RaportsCreator
                         const std::filesystem::path& tmpdir ):
                         raportsDirectory( dir ),
                         templateDirectory( tmpdir ){};
+    private:
+        std::filesystem::path prepareEmptyDaylyRaport( );
+        bool isDaylyRaportCreated( std::time_t time );
+        bool isRaportsTemlatesCreated();
 };
 
 #endif 
