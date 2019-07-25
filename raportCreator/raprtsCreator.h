@@ -17,11 +17,18 @@ class RaportsCreator
         RaportsCreator( const std::filesystem::path& dir, 
                         const std::filesystem::path& tmpdir ):
                         raportsDirectory( dir ),
-                        templateDirectory( tmpdir ){};
+                        templateDirectory( tmpdir )
+                        {
+                            if( !isDirectoryCreated( raportsDirectory ) )
+                            {
+                                std::filesystem::create_directory( raportsDirectory );
+                            }
+                        };
     private:
         std::filesystem::path prepareEmptyDaylyRaport( );
         bool isDaylyRaportCreated( std::time_t time );
-        bool isRaportsTemlatesCreated();
+        bool isRaportsTemplatesCreated();
+        bool isDirectoryCreated( std::string dirName );
 };
 
 #endif 
