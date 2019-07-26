@@ -17,6 +17,7 @@ class RaportsTimer
 
         std::time_t getTime()
         {
+            setTime();
             return time;
         }
 };

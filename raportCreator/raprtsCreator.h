@@ -5,6 +5,11 @@
 #include <filesystem>
 #include <string>
 #include <ctime>
+#include <map>
+
+#include "./singleRaport.h"
+#include "../timer/raportsTimer.h"
+
 
 class RaportsCreator
 {
@@ -12,7 +17,8 @@ class RaportsCreator
     std::string settingsFile { "settings.txt" };  
     std::filesystem::path raportsDirectory;
     std::filesystem::path templateDirectory;
-
+    std::map<RaportsTimer,std::vector
+    std::vector<DaylyRaport> raports;
     public:
         RaportsCreator( const std::filesystem::path& dir, 
                         const std::filesystem::path& tmpdir ):
