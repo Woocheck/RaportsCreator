@@ -5,11 +5,13 @@
 
 #include "../timer/raportsTimer.h"
 
-struct resultsRecord
+struct ResultsRecord
 {
     int sensorKeyNumber {};
     RaportsTimer measurementDate;
-
+    float measurmentValue;
 };
+
+
 
 #endif 
