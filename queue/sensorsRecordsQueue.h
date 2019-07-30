@@ -2,7 +2,8 @@
 #define __SENSORS_RECORDS_QUEUE__
  
 #include <string>
-#include <map>
+#include <vector>
+#include <chrono>
 
 #include "../timer/raportsTimer.h"
 
@@ -15,22 +16,17 @@ struct SingleMeasurment
 
 class SingleRecord
 {
-    std::map< int, SingleMeasurment > setOfMeasurments {};
+    
     int numberOfMeasurmentPoints {};
-    SingleMeasurment& measurmentsList;
-    std::time_t dateOfRecord {};
-    std::tm localDateOfRecord{};
+    std::vector< SingleMeasurment > setOfMeasurments {};
 
+    std::chrono::system_clock::time_point dateOfRecord {};
     std::string singleRecord;
 
     public:
-        SingleRecord( int points, SingleMeasurment& list ):
+        SingleRecord( int points, std::vector<SingleMeasurment>& list ):
             numberOfMeasurmentPoints( points ),
-            measurmentsList( list ) 
-            {
-                localDateOfRecord = *std::localtime( &dateOfRecord );
-                localDateOfRecord.tm_sec = 0;
-            };
+            setOfMeasurments( list ) {};
 
         void setRecordDate(const std::time_t& );
         bool isMeasurmentHaveCorrectDate( const SingleMeasurment& measurment );

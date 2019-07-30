@@ -1,5 +1,6 @@
 #include <string>
-#include <map>
+#include <vector>
+#include <chrono>
 
 #include "./sensorsRecordsQueue.h"
 #include "../timer/raportsTimer.h"
@@ -15,7 +16,7 @@ bool SingleRecord::isMeasurmentHaveCorrectDate( const SingleMeasurment& measurme
     localMeasurment.tm_sec = 0;
     auto m = 
     
-    if( difftime(  , localMeasurment ) == 0 )
+    if(  )
 };
 bool SingleRecord::isSetOfMeasurmentsCompleted();
 void SingleRecord::getSingleMeasurment( const SingleMeasurment& );
