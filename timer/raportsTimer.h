@@ -1,46 +1,42 @@
 #ifndef __RAPORTS_TIMER_H__
 #define __RAPORTS_TIMER_H__
 
-#include <ctime>
+#include <chrono>
 
 class RaportsTimer
 {
-    std::time_t time {};
+    std::chrono::system_clock::time_point time {};
 
     public:
         RaportsTimer() = default;
 
         void setTime()
         {
-            std::time( & time );
+            time = std::chrono::system_clock::now();
         }
-        std::time_t getTime()
+        
+        std::chrono::system_clock::time_point getTime()
         {
             return time;
-        }
-        std::tm getUtc()
-        {
-            return *std::gmtime( &time );
-        }
-        std::tm getLocal()
-        {
-            return *std::localtime( &time );
         }
 
-        std::time_t getCurrentTime()
+        std::chrono::system_clock::time_point getCurrentTime()
         {
             setTime();
             return time;
         }
-        std::tm getCurrentUtc()
+
+        std::string getStringTime()
         {
-            setTime();
-            return *std::gmtime( &time );
+            std::time_t t = std::chrono::system_clock::to_time_t( time );
+            return std::ctime( &t );
         }
-        std::tm getCurrentLocal()
+
+        std::string getCurrentStringTime()
         {
             setTime();
-            return *std::localtime( &time );
+            std::time_t t = std::chrono::system_clock::to_time_t( time );
+            return std::ctime( &t );
         }
 };
 
