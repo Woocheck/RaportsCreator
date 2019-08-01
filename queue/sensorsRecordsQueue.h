@@ -28,7 +28,7 @@ class SingleRecord
             numberOfMeasurmentPoints( points ),
             setOfMeasurments( list ) {};
 
-        void setRecordDate(const std::time_t& );
+        void setRecordDate(const std::chrono::system_clock::time_point& );
         bool isMeasurmentHaveCorrectDate( const SingleMeasurment& measurment );
         bool isSetOfMeasurmentsCompleted();
         void getSingleMeasurment( const SingleMeasurment& );

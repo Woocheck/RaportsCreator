@@ -6,19 +6,27 @@
 #include "../timer/raportsTimer.h"
 
 
-void SingleRecord::setRecordDate(const std::time_t& date )
+void SingleRecord::setRecordDate(const std::chrono::system_clock::time_point& date )
 {
     dateOfRecord = date;
 };
 bool SingleRecord::isMeasurmentHaveCorrectDate( const SingleMeasurment& measurment )
 {
-    auto localMeasurment = *std::localtime( &measurment );
-    localMeasurment.tm_sec = 0;
-    auto m = 
     
-    if(  )
 };
-bool SingleRecord::isSetOfMeasurmentsCompleted();
-void SingleRecord::getSingleMeasurment( const SingleMeasurment& );
-void SingleRecord::makeSingleRecord( const std::time_t& );
-std::string SingleRecord::getRecord( const std::time_t& );
+bool SingleRecord::isSetOfMeasurmentsCompleted()
+{
+
+};
+void SingleRecord::getSingleMeasurment( const SingleMeasurment& )
+{
+
+};
+void SingleRecord::makeSingleRecord( const std::time_t& )
+{
+
+};
+std::string SingleRecord::getRecord( const std::time_t& )
+{
+
+};
