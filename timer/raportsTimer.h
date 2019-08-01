@@ -15,7 +15,7 @@ class RaportsTimer
             time = std::chrono::system_clock::now();
         }
         
-        std::chrono::system_clock::time_point getTime()
+        std::chrono::system_clock::time_point getTime() const
         {
             return time;
         }
@@ -26,7 +26,7 @@ class RaportsTimer
             return time;
         }
 
-        std::string getStringTime()
+        std::string getStringTime() const
         {
             std::time_t t = std::chrono::system_clock::to_time_t( time );
             return std::ctime( &t );
