@@ -4,6 +4,7 @@
 #include<algorithm>
 
 #include "./timer/raportsTimer.h"
+#include "./testList/testList.h"
 #include "./queue/sensorsRecordsQueue.h"
 
 
@@ -11,14 +12,16 @@
 
 int main()
 {
-    std::vector<SingleMeasurment> testList {};
-    RaportsTimer first {};
-    first.setTime();
-    testList = makeTestList( 100 );
-    RaportsTimer second {};
-    second.setTime();
+    const int testListSize { 100 };
+    const int measuringPointsNumber { 5 };
 
-    SingleRecord record( 5, testList );
+    TestList testList( testListSize, measuringPointsNumber );
+
+    auto list = testList.getList();
+    std::for_each( std::begin( list ), std::end( list ), []( auto line )
+    {
+        std::cout << line.getString() << "\n";
+    });
     
 }
 
