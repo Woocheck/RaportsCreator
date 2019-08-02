@@ -2,6 +2,7 @@
 #define __TEST_LIST__
  
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <chrono>
@@ -38,9 +39,26 @@ class SingleLine
             return measuringValues_;
         }
 
-        std::iostream getStream()
+        std::string getString()
         {
-            std::iostream result;
+            std::string result;
+            result = timePointAsString( measuringDate_);
+            for( auto value : measuringValues_ )
+            {
+                result += " ";
+                result += value ;
+            }
+            return result;
+        }
+        
+        private:
+
+        static std::string timePointAsString(const std::chrono::system_clock::time_point& tp) 
+        {
+            std::time_t t = std::chrono::system_clock::to_time_t(tp);
+            std::string ts = std::ctime(&t);
+            ts.resize(ts.size()-1);
+            return ts;
         }
 };
  
