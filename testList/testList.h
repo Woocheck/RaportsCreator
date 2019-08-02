@@ -46,7 +46,9 @@ class SingleLine
             for( auto value : measuringValues_ )
             {
                 result += " ";
-                result += value ;
+                std::ostringstream valueString;
+                valueString << value;
+                result +=  valueString.str();
             }
             return result;
         }
@@ -62,19 +64,23 @@ class SingleLine
         }
 };
  
-class testList
+class TestList
 {
     int measuringPointsNumber_ {};
     int elementsNumber_ {};
     std::vector<SingleLine> list_ {};
 
     public:
-        testList( int elnum, int pointsNum ):
+        TestList( int elnum, int pointsNum ):
         elementsNumber_( elnum ),
         measuringPointsNumber_( pointsNum ) 
         {
             generateList();
         };
+        std::vector<SingleLine> getList()
+        {
+            return list_;
+        }
     private:
         void generateList()
         {
@@ -84,6 +90,7 @@ class testList
                 list_.push_back( line );
             }
         };
+        
     
 };
 
