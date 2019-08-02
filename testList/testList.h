@@ -50,21 +50,41 @@ class SingleLine
             }
             return result;
         }
-        
+
         private:
 
-        static std::string timePointAsString(const std::chrono::system_clock::time_point& tp) 
+        static std::string timePointAsString(const std::chrono::system_clock::time_point& timePoint ) 
         {
-            std::time_t t = std::chrono::system_clock::to_time_t(tp);
-            std::string ts = std::ctime(&t);
-            ts.resize(ts.size()-1);
-            return ts;
+            std::time_t timePoint_t = std::chrono::system_clock::to_time_t( timePoint );
+            std::string timePoint_string = std::ctime( &timePoint_t );
+            timePoint_string.resize( timePoint_string.size()-1 );
+            return timePoint_string;
         }
 };
  
 class testList
 {
-    std::vector<SingleLine> list;
+    int measuringPointsNumber_ {};
+    int elementsNumber_ {};
+    std::vector<SingleLine> list_ {};
+
+    public:
+        testList( int elnum, int pointsNum ):
+        elementsNumber_( elnum ),
+        measuringPointsNumber_( pointsNum ) 
+        {
+            generateList();
+        };
+    private:
+        void generateList()
+        {
+            for( auto i{0}; i < elementsNumber_; i++ )
+            {
+                SingleLine line( measuringPointsNumber_ );
+                list_.push_back( line );
+            }
+        };
+    
 };
 
 #endif 
