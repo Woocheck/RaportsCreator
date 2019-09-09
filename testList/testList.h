@@ -18,9 +18,11 @@ class SingleLine
     
     public:
         SingleLine( int measuringPoints ):
-            numberMeasuringPoints_( measuringPoints){
+            numberMeasuringPoints_( measuringPoints)
+            {
                 makeSingleLine();
             };
+
         void makeSingleLine()
         {
             measuringDate_ = std::chrono::system_clock::now();
