@@ -17,7 +17,7 @@ class RaportsCreator
     std::string settingsFile { "settings.txt" };  
     std::filesystem::path raportsDirectory;
     std::filesystem::path templateDirectory;
-    std::map<RaportsTimer,std::vector
+    std::map<RaportsTimer,std::vector<DaylyRaport>> map;
     std::vector<DaylyRaport> raports;
     public:
         RaportsCreator( const std::filesystem::path& dir, 
